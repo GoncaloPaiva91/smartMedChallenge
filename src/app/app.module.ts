@@ -4,10 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MedicationListComponent } from './components/medication-list/medication-list.component';
+import { MedicationFormComponent } from './components/medication-form/medication-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MedicationListComponent,
+    MedicationFormComponent
   ],
   imports: [
     BrowserModule,
