@@ -1,9 +1,9 @@
 button[mat-raised-button] {
-  height: 56px;
+  height: 50px;
 }
 
 /* Alinha botão com mat-form-field outline */
 .medication-action-btn {
-  height: 56px;          /* altura visual do mat-form-field */
+  height: 46px;          /* altura visual do mat-form-field */
   margin-top: 4px;       /* corrige o offset do label flutuante */
 }

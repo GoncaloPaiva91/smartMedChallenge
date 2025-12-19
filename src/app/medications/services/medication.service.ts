@@ -14,7 +14,7 @@ export class MedicationService {
       quantity: 100,
       createdAt: new Date(),
       updatedAt: new Date(),
-    }
+    },
   ];
 
   getAll(): Medication[] {

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MedicationService } from '../../services/medication.service';
 import { Medication } from '../../models/medication.model';
 
 @Component({
@@ -11,14 +10,9 @@ export class MedicationListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'category', 'quantity', 'createdAt', 'updatedAt', 'actions'];
   medications: Medication[] = [];
 
-  constructor(private medicationService: MedicationService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.load(); // load list of medications;
   }
-  
-  load() {
-  this.medications = this.medicationService.getAll();
-}
 
 }
