@@ -3,6 +3,7 @@ export interface Medication {
   name: string;
   category: string;
   quantity: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
+  actions?: any;
 }

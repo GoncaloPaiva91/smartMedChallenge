@@ -8,7 +8,7 @@ import { Medication } from '../../models/medication.model';
   styleUrls: ['./medication-list.component.scss'],
 })
 export class MedicationListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'category', 'quantity', 'createdAt', 'updatedAt'];
+  displayedColumns: string[] = ['id', 'name', 'category', 'quantity', 'createdAt', 'updatedAt', 'actions'];
   medications: Medication[] = [];
 
   constructor(private medicationService: MedicationService) { }

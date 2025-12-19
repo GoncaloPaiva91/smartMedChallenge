@@ -13,7 +13,7 @@ export class MedicationService {
       category: 'Analgesic',
       quantity: 100,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     }
   ];
 
