@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Medication } from '../../models/medication.model';
 
 @Component({
@@ -8,7 +8,7 @@ import { Medication } from '../../models/medication.model';
 })
 export class MedicationListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'category', 'quantity', 'createdAt', 'updatedAt', 'actions'];
-  medications: Medication[] = [];
+  @Input() items: Medication[] = []; 
 
   constructor() { }
 

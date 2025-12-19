@@ -15,6 +15,14 @@ export class MedicationService {
       createdAt: new Date(),
       updatedAt: new Date(),
     },
+    {
+      id: 2,
+      name: 'Griponal',
+      category: 'Analgesic',
+      quantity: 50,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
   ];
 
   getAll(): Medication[] {

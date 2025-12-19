@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Medication } from '../../models/medication.model';
+import { MedicationService } from '../../services/medication.service';
 
 @Component({
   selector: 'app-medication-page',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./medication-page.component.scss']
 })
 export class MedicationPageComponent implements OnInit {
+  items: Medication[] = [];
 
-  constructor() { }
+  constructor(private medicationService: MedicationService) { }
 
   ngOnInit(): void {
+    this.loadItems(); // LOAD STATIC DATA FOR LIST
+  }
+
+  loadItems(): void {
+    this.items = this.medicationService.getAll()
+    .sort((a, b) => a.name.localeCompare(b.name)); // 1- SORT LIST BY NAME AS REQUIRED!;
   }
 
 }
