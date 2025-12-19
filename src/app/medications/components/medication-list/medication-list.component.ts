@@ -8,11 +8,15 @@ import { Medication } from '../../models/medication.model';
 })
 export class MedicationListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'category', 'quantity', 'createdAt', 'updatedAt', 'actions'];
-  @Input() items: Medication[] = []; 
+  @Input() items: Medication[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  trackById(index: number, item: Medication) {
+    return item.id;
   }
 
 }

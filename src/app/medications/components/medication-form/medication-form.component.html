@@ -8,7 +8,11 @@
         <input
           matInput
           formControlName="name"
-          placeholder="Medication name">
+          placeholder="Medication name"~
+          [errorStateMatcher]="matcher">
+           <mat-error *ngIf="submitted && form.get('name')?.hasError('required')">
+              Name is required
+          </mat-error>
       </mat-form-field>
     </div>
 
@@ -19,7 +23,11 @@
         <input
           matInput
           formControlName="category"
-          placeholder="Category">
+          placeholder="Category"
+          [errorStateMatcher]="matcher">
+           <mat-error *ngIf="submitted && form.get('category')?.hasError('required')">
+              Category is required
+          </mat-error>
       </mat-form-field>
     </div>
 
@@ -41,8 +49,7 @@
         mat-raised-button
         color="primary"
         type="submit"
-        class="w-100 medication-action-btn"
-        [disabled]="form.invalid">
+        class="w-100 medication-action-btn">
         {{ form.get('id')?.value ? 'Update' : 'Add' }}
       </button>
     </div>

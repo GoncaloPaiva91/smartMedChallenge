@@ -24,8 +24,19 @@ export class MedicationService {
       updatedAt: new Date(),
     },
   ];
+  private nextId = 3;
 
   getAll(): Medication[] {
-    return this.medications;
+    return [...this.medications];
+  }
+
+  add(medication: Medication): void {
+    this.medications.push({
+      ...medication,
+      id: this.nextId++,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    });
+
   }
 }

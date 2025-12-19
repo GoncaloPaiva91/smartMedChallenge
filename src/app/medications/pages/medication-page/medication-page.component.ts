@@ -9,6 +9,7 @@ import { MedicationService } from '../../services/medication.service';
 })
 export class MedicationPageComponent implements OnInit {
   items: Medication[] = [];
+  selected: Medication | null = null;
 
   constructor(private medicationService: MedicationService) { }
 
@@ -21,4 +22,10 @@ export class MedicationPageComponent implements OnInit {
     .sort((a, b) => a.name.localeCompare(b.name)); // 1- SORT LIST BY NAME AS REQUIRED!;
   }
 
+  onSave(medication: Medication): void {
+    this.medicationService.add(medication);
+    this.selected = null;
+
+    this.loadItems();
+  }
 }

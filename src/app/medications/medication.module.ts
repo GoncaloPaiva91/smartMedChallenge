@@ -31,6 +31,5 @@ import { MatIconModule } from '@angular/material/icon';
     MedicationFormComponent,
     MedicationListComponent,
   ],
-  schemas: [NO_ERRORS_SCHEMA],
 })
 export class MedicationsModule {}
