@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { MatTableModule } from '@angular/material/table';
 import { MedicationFormComponent } from './components/medication-form/medication-form.component';
 import { MedicationListComponent } from './components/medication-list/medication-list.component';
 
@@ -10,7 +10,13 @@ import { MedicationListComponent } from './components/medication-list/medication
     MedicationListComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatTableModule,
   ],
+  exports: [
+    MedicationFormComponent,
+    MedicationListComponent,
+  ],
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class MedicationsModule {}

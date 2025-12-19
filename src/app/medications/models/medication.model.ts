@@ -1,5 +1,5 @@
 export interface Medication {
-  id: string;
+  id: number;
   name: string;
   category: string;
   quantity: number;
