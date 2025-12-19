@@ -3,20 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MedicationListComponent } from './components/medication-list/medication-list.component';
-import { MedicationFormComponent } from './components/medication-form/medication-form.component';
+import { MedicationsModule } from './medications/medication.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MedicationListComponent,
-    MedicationFormComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserModule,
+    MedicationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
