@@ -25,7 +25,6 @@ export class MedicationPageComponent implements OnInit {
   onSave(medication: Medication): void {
     if (medication.id) { // for edit
       const item = this.items.find(obj => obj.id === medication.id);
-debugger;
       medication = { // i this for passing createdAt that's it's lost on edit
         ...medication,
         createdAt: item?.createdAt,
