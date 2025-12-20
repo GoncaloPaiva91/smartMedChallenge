@@ -6,6 +6,7 @@ import { Medication } from '../models/medication.model';
   providedIn: 'root'
 })
 export class MedicationService {
+  // for putting in memory;
   medications: Medication[] = [
     {
       id: 1,

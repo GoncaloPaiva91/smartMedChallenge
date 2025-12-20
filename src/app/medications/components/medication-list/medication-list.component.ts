@@ -26,6 +26,6 @@ export class MedicationListComponent implements OnInit {
   }
 
   deleteItem(item: Medication): void {
-    this.delete.emit(item);
+    this.delete.emit(item); 
   }
 }
