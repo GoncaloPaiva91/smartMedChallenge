@@ -21,6 +21,8 @@ export class MedicationListComponent implements OnInit {
   }
 
   onEdit(item: Medication): void {
+    console.log("item", item);
+    debugger;
     this.edit.emit(item);
   }
 
