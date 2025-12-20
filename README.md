@@ -22,3 +22,7 @@
 ```bash
 npm install
 ng serve
+
+## 🔗 Links
+- Repository: https://github.com/GoncaloPaiva91/smart-med-challenge
+- Live demo: https://goncalopaiva91.github.io/smart-med-challenge/
