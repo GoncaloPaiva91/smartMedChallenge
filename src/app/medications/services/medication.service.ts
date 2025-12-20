@@ -39,12 +39,13 @@ export class MedicationService {
     });
   }
 
-  update(item: Medication): void {
+  update(item: Medication, createdAt?: Date): void {
     const index = this.medications.findIndex(m => m.id === item.id);
 
     if (index !== -1) {
       this.medications[index] = {
         ...item,
+        createdAt,
         updatedAt: new Date(),
       };
     }

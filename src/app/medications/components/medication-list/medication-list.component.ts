@@ -9,7 +9,7 @@ import { Medication } from '../../models/medication.model';
 export class MedicationListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'category', 'quantity', 'createdAt', 'updatedAt', 'actions'];
   @Input() items: Medication[] = [];
-  @Output() edit = new EventEmitter<Medication>();
+  @Output() update = new EventEmitter<Medication>();
 
   constructor() { }
 
@@ -20,12 +20,11 @@ export class MedicationListComponent implements OnInit {
     return item.id;
   }
 
-  onEdit(item: Medication): void {
-    this.edit.emit(item);
+  updateItem(item: Medication): void {
+    this.update.emit(item);
   }
 
-  // onDelete(item: Medication): void {
-
+  // deleteItem(item: Medication): void {
+  //   this.deleteItem.emit(item)
   // }
-
 }

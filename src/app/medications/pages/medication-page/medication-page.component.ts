@@ -25,12 +25,7 @@ export class MedicationPageComponent implements OnInit {
   onSave(medication: Medication): void {
     if (medication.id) { // for edit
       const item = this.items.find(obj => obj.id === medication.id);
-      medication = { // i this for passing createdAt that's it's lost on edit
-        ...medication,
-        createdAt: item?.createdAt,
-      };
-  
-      this.medicationService.update(medication);
+      this.medicationService.update(medication, item?.createdAt);
       alert('Medication updated successfully');
     } else { // for add
       this.medicationService.add(medication);
@@ -40,7 +35,7 @@ export class MedicationPageComponent implements OnInit {
     this.loadItems();
   }
 
-  onEdit(medication: Medication): void {
-    this.selected = { ...medication }; // cópia defensiva
+  onUpdate(medication: Medication): void {
+    this.selected = { ...medication };
   }
 }
