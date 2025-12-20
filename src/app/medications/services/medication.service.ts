@@ -10,7 +10,7 @@ export class MedicationService {
   medications: Medication[] = [
     {
       id: 1,
-      name: 'Paracetamol',
+      name: 'Griponal',
       category: 'Analgesic',
       quantity: 100,
       createdAt: new Date(),
@@ -18,7 +18,7 @@ export class MedicationService {
     },
     {
       id: 2,
-      name: 'Griponal',
+      name: 'Paracetamol',
       category: 'Analgesic',
       quantity: 50,
       createdAt: new Date(),
