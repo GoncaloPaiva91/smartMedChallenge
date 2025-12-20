@@ -10,6 +10,7 @@ export class MedicationListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'category', 'quantity', 'createdAt', 'updatedAt', 'actions'];
   @Input() items: Medication[] = [];
   @Output() update = new EventEmitter<Medication>();
+  @Output() delete = new EventEmitter<Medication>();
 
   constructor() { }
 
@@ -24,7 +25,7 @@ export class MedicationListComponent implements OnInit {
     this.update.emit(item);
   }
 
-  // deleteItem(item: Medication): void {
-  //   this.deleteItem.emit(item)
-  // }
+  deleteItem(item: Medication): void {
+    this.delete.emit(item);
+  }
 }

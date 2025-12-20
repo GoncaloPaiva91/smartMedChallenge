@@ -25,17 +25,39 @@ export class MedicationPageComponent implements OnInit {
   onSave(medication: Medication): void {
     if (medication.id) { // for edit
       const item = this.items.find(obj => obj.id === medication.id);
-      this.medicationService.update(medication, item?.createdAt);
-      alert('Medication updated successfully');
+      this.medicationService.update(medication, item?.createdAt)
+      .then(() => {
+        this.loadItems();
+        this.selected = null;
+        alert('Medication updated successfully!');
+      })
+        .catch(() => {
+          alert('Error on medication updated!');
+        });
     } else { // for add
-      this.medicationService.add(medication);
+      this.medicationService.add(medication)
+      .then(() => {
+        this.loadItems();
+        this.selected = null;
+        alert('Medication updated successfully!');
+      }).catch(() => {
+        alert('Erro on adding medication!');
+      });
     }
-    this.selected = null;
-
-    this.loadItems();
   }
 
   onUpdate(medication: Medication): void {
     this.selected = { ...medication };
+  }
+
+  onDelete(medication: Medication): void {
+    this.medicationService.delete(medication)
+      .then(() => {
+        this.loadItems();
+        alert('Medication deleted successfully!');
+      })
+      .catch(() => {
+        alert('Error deleting medication');
+      });
   }
 }

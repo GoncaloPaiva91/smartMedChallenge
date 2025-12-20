@@ -30,24 +30,37 @@ export class MedicationService {
     return [...this.medications];
   }
 
-  add(medication: Medication): void {
-    this.medications.push({
-      ...medication,
-      id: this.nextId++,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+  add(medication: Medication): Promise<void> {
+    return new Promise((resolve) => {
+      this.medications.push({
+        ...medication,
+        id: this.nextId++,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+      setTimeout(() => resolve(), 300);
     });
   }
 
-  update(item: Medication, createdAt?: Date): void {
-    const index = this.medications.findIndex(m => m.id === item.id);
+  update(item: Medication, createdAt?: Date): Promise<void> {
+    return new Promise((resolve) => {
+      const index = this.medications.findIndex(m => m.id === item.id);
 
-    if (index !== -1) {
-      this.medications[index] = {
-        ...item,
-        createdAt,
-        updatedAt: new Date(),
-      };
-    }
+      if (index !== -1) {
+        this.medications[index] = {
+          ...item,
+          createdAt,
+          updatedAt: new Date(),
+        };
+      }
+      setTimeout(() => resolve(), 300);
+    });
+  }
+
+  delete(item: Medication): Promise<void> {
+    return new Promise((resolve) => {
+      this.medications = this.medications.filter(element => element.id !== item.id);
+      setTimeout(() => resolve(), 300);
+    });
   }
 }

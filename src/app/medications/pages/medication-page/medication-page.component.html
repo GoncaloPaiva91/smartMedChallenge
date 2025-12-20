@@ -13,7 +13,8 @@
       <div class="card-body list-wrapper">
         <app-medication-list 
         [items]="items"
-        (update)="onUpdate($event)">
+        (update)="onUpdate($event)"
+        (delete)="onDelete($event)">
         </app-medication-list>
       </div>
     </div>
