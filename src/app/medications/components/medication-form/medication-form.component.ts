@@ -28,8 +28,10 @@ export class MedicationFormComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-
+  ngOnChanges(): void {
+    if(this.selected) {
+      this.form.patchValue(this.selected);
+    }
   }
 
   trackById(index: number, item: Medication) {

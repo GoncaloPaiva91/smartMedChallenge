@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Medication } from '../../models/medication.model';
 
 @Component({
@@ -9,14 +9,23 @@ import { Medication } from '../../models/medication.model';
 export class MedicationListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'category', 'quantity', 'createdAt', 'updatedAt', 'actions'];
   @Input() items: Medication[] = [];
+  @Output() edit = new EventEmitter<Medication>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  trackById(index: number, item: Medication) {
+  trackById(index: number, item: Medication): any {
     return item.id;
   }
+
+  onEdit(item: Medication): void {
+    this.edit.emit(item);
+  }
+
+  // onDelete(item: Medication): void {
+
+  // }
 
 }

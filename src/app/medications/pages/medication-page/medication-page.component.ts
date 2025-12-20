@@ -19,13 +19,23 @@ export class MedicationPageComponent implements OnInit {
 
   loadItems(): void {
     this.items = this.medicationService.getAll()
-    .sort((a, b) => a.name.localeCompare(b.name)); // 1- SORT LIST BY NAME AS REQUIRED!;
+      .sort((a, b) => a.name.localeCompare(b.name)); // 1- SORT LIST BY NAME AS REQUIRED!;
   }
 
   onSave(medication: Medication): void {
+    if(medication.id) {
+      this.medicationService.update(medication);
+      alert('Medication updated successfully');
+    }
     this.medicationService.add(medication);
     this.selected = null;
 
     this.loadItems();
   }
+
+  onEdit(medication: Medication): void {
+    this.selected = { ...medication }; // cópia defensiva
+  }
+
+
 }
