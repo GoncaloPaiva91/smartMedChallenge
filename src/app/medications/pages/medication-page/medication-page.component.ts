@@ -9,7 +9,10 @@ import { MedicationService } from '../../services/medication.service';
 })
 export class MedicationPageComponent implements OnInit {
   items: Medication[] = [];
+  allItems: Medication[] = [];
   selected: Medication | null = null;
+
+  filterText = '';
 
   constructor(private medicationService: MedicationService) { }
 
@@ -17,32 +20,45 @@ export class MedicationPageComponent implements OnInit {
     this.loadItems(); // LOAD STATIC DATA FOR LIST
   }
 
-  loadItems(): void {
-    this.items = this.medicationService.getAll()
-      .sort((a, b) => a.name.localeCompare(b.name)); // 1- SORT LIST BY NAME AS REQUIRED!;
+  async loadItems(): Promise<void> {
+    const data = await this.medicationService.getAll();
+
+    this.allItems = data.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+
+    this.applyFilter();
+  }
+
+  applyFilter(): void {
+    const text = this.filterText.toLowerCase().trim();
+
+    this.items = this.allItems.filter(m =>
+      m.name.toLowerCase().includes(text),
+    );
   }
 
   onSave(medication: Medication): void {
     if (medication.id) { // for edit
       const item = this.items.find(obj => obj.id === medication.id);
       this.medicationService.update(medication, item?.createdAt)
-      .then(() => {
-        this.loadItems();
-        this.selected = null;
-        alert('Medication updated successfully!');
-      })
+        .then(() => {
+          this.loadItems();
+          this.selected = null;
+          alert('Medication updated successfully!');
+        })
         .catch(() => {
           alert('Error on medication updated!');
         });
     } else { // for add
       this.medicationService.add(medication)
-      .then(() => {
-        this.loadItems();
-        this.selected = null;
-        alert('Medication updated successfully!');
-      }).catch(() => {
-        alert('Erro on adding medication!');
-      });
+        .then(() => {
+          this.loadItems();
+          this.selected = null;
+          alert('Medication updated successfully!');
+        }).catch(() => {
+          alert('Erro on adding medication!');
+        });
     }
   }
 

@@ -9,6 +9,17 @@
       </div>
     </div>
 
+    <div class="card mb-3">
+      <div class="card-body">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Filter by name..."
+          [(ngModel)]="filterText"
+          (input)="applyFilter()">
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-body list-wrapper">
         <app-medication-list 

@@ -30,7 +30,7 @@ export class MedicationService {
     return [...this.medications];
   }
 
-  add(medication: Medication): Promise<void> {
+  async add(medication: Medication): Promise<void> {
     return new Promise((resolve) => {
       this.medications.push({
         ...medication,
@@ -42,7 +42,7 @@ export class MedicationService {
     });
   }
 
-  update(item: Medication, createdAt?: Date): Promise<void> {
+  async update(item: Medication, createdAt?: Date): Promise<void> {
     return new Promise((resolve) => {
       const index = this.medications.findIndex(m => m.id === item.id);
 
@@ -57,7 +57,7 @@ export class MedicationService {
     });
   }
 
-  delete(item: Medication): Promise<void> {
+  async delete(item: Medication): Promise<void> {
     return new Promise((resolve) => {
       this.medications = this.medications.filter(element => element.id !== item.id);
       setTimeout(() => resolve(), 300);
