@@ -19,9 +19,11 @@ export class MedicationFormComponent implements OnInit, OnChanges {
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       id: [null],
-      name: ['', Validators.required],
-      category: ['', Validators.required],
-      quantity: [1, [Validators.required, Validators.min(1)]]
+      name: [
+        '', [Validators.required, Validators.maxLength(50)]],
+      category: ['', [Validators.required, Validators.maxLength(30)]],
+      quantity: [1, [Validators.required, Validators.min(1), Validators.pattern('^[0-9]+$')],
+      ]
     });
   }
 

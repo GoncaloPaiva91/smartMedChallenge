@@ -13,6 +13,9 @@
            <mat-error *ngIf="submitted && form.get('name')?.hasError('required')">
               Name is required
           </mat-error>
+          <mat-error *ngIf="submitted && form.get('name')?.hasError('maxlength')">
+              Maximum 50 characteres
+          </mat-error>
       </mat-form-field>
     </div>
 
@@ -28,6 +31,9 @@
            <mat-error *ngIf="submitted && form.get('category')?.hasError('required')">
               Category is required
           </mat-error>
+          <mat-error *ngIf="submitted && form.get('category')?.hasError('maxlength')">
+              Maximum 30 characteres
+          </mat-error>
       </mat-form-field>
     </div>
 
@@ -38,8 +44,17 @@
         <input
           matInput
           type="number"
-          min="0"
+          min="1"
           formControlName="quantity">
+          <mat-error *ngIf="submitted && form.get('category')?.hasError('required')">
+              Quantity is required
+          </mat-error>
+          <mat-error *ngIf="submitted && form.get('quantity')?.hasError('min')">
+             At least 1
+          </mat-error>
+          <mat-error *ngIf="submitted && form.get('quantity')?.hasError('pattern')">
+              No decimal numbers allowed
+          </mat-error>
       </mat-form-field>
     </div>
 
