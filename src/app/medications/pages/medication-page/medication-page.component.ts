@@ -23,11 +23,12 @@ export class MedicationPageComponent implements OnInit {
   }
 
   onSave(medication: Medication): void {
-    if(medication.id) {
+    if (medication.id) { // for edit
       this.medicationService.update(medication);
       alert('Medication updated successfully');
+    } else { // for add
+      this.medicationService.add(medication);
     }
-    this.medicationService.add(medication);
     this.selected = null;
 
     this.loadItems();
@@ -36,6 +37,4 @@ export class MedicationPageComponent implements OnInit {
   onEdit(medication: Medication): void {
     this.selected = { ...medication }; // cópia defensiva
   }
-
-
 }

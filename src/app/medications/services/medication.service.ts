@@ -35,17 +35,17 @@ export class MedicationService {
       ...medication,
       id: this.nextId++,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     });
   }
 
-  update(updated: Medication): void {
-    const index = this.medications.findIndex(m => m.id === updated.id);
+  update(item: Medication): void {
+    const index = this.medications.findIndex(m => m.id === item.id);
 
     if (index !== -1) {
       this.medications[index] = {
-        ...updated,
-        updatedAt: new Date()
+        ...item,
+        updatedAt: new Date(),
       };
     }
   }

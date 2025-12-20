@@ -29,7 +29,7 @@ export class MedicationFormComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    if(this.selected) {
+    if (this.selected) {
       this.form.patchValue(this.selected);
     }
   }
