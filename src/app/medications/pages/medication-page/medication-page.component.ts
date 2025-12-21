@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Medication } from '../../models/medication.model';
 import { MedicationService } from '../../services/medication.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-medication-page',
@@ -14,14 +15,16 @@ export class MedicationPageComponent implements OnInit {
 
   filterText = '';
 
-  constructor(private medicationService: MedicationService) { }
+  constructor(private medicationService: MedicationService,
+    private snackBar: MatSnackBar,
+  ) { }
 
   ngOnInit(): void {
     this.loadItems(); // LOAD STATIC DATA FOR LIST
   }
 
-  async loadItems(): Promise<void> {
-    const data = await this.medicationService.getAll();
+  loadItems(): void {
+    const data = this.medicationService.getAll();
 
     this.allItems = data.sort((a, b) =>
       a.name.localeCompare(b.name)
@@ -45,19 +48,27 @@ export class MedicationPageComponent implements OnInit {
         .then(() => {
           this.loadItems();
           this.selected = null;
-          alert('Medication updated successfully!');
+          this.snackBar.open('Medication updated successfully!', 'OK', {
+            duration: 2000,
+          });
         })
         .catch(() => {
-          alert('Error on medication updated!');
+          this.snackBar.open('Error on medication updated!', 'OK', {
+            duration: 2000,
+          });
         });
     } else { // for add
       this.medicationService.add(medication)
         .then(() => {
           this.loadItems();
           this.selected = null;
-          alert('Medication updated successfully!');
+          this.snackBar.open('Medication added successfully!', 'OK', {
+            duration: 2000,
+          });
         }).catch(() => {
-          alert('Erro on adding medication!');
+          this.snackBar.open('Error on adding medication!', 'OK', {
+            duration: 2000,
+          });
         });
     }
   }
@@ -70,10 +81,14 @@ export class MedicationPageComponent implements OnInit {
     this.medicationService.delete(medication)
       .then(() => {
         this.loadItems();
-        alert('Medication deleted successfully!');
+        this.snackBar.open('Medication deleted successfully!', 'OK', {
+          duration: 2000,
+        });
       })
       .catch(() => {
-        alert('Error deleting medication');
+        this.snackBar.open('Error deleting medication!', 'OK', {
+          duration: 2000,
+        });
       });
   }
 }

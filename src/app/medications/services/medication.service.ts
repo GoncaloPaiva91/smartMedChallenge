@@ -25,7 +25,6 @@ export class MedicationService {
       updatedAt: new Date(),
     },
   ];
-  private nextId = 3;
 
   getAll(): Medication[] {
     return [...this.medications];
@@ -35,7 +34,7 @@ export class MedicationService {
     return new Promise((resolve) => {
       this.medications.push({
         ...medication,
-        id: this.nextId++,
+        id: this.getNextId(),
         createdAt: new Date(),
         updatedAt: new Date(),
       });
@@ -63,5 +62,10 @@ export class MedicationService {
       this.medications = this.medications.filter(element => element.id !== item.id);
       setTimeout(() => resolve(), 300);
     });
+  }
+
+  private getNextId(): number {
+    return this.medications.length
+      ? Math.max(...this.medications.map(m => m.id)) + 1 : 1;
   }
 }
