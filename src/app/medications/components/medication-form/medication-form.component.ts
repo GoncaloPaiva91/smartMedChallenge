@@ -36,10 +36,6 @@ export class MedicationFormComponent implements OnInit, OnChanges {
     }
   }
 
-  trackById(index: number, item: Medication) {
-    return item.id;
-  }
-
   onSubmit(): void {
     this.submitted = true;
     if (this.form.invalid) {

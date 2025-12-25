@@ -8,7 +8,6 @@
   4. Delete a medication with a confirmation message
   5. Filter the list of medications (by Name)
 
-
 ## 🧪 Testing
 - Includes a simple unit test demonstrating form validation and event emission.
 
